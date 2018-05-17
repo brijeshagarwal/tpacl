@@ -12,7 +12,7 @@
     "budget": {
       "type": "number"
     },
-    "id": {
+    "team_id": {
       "type": "string"
     }
   },
