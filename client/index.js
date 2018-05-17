@@ -49,10 +49,12 @@ function tcontroller($scope, $http) {
 
   $scope.isBidding = function (index) {
     const bid = $scope.currentBid ? $scope.currentBid + 100 : $scope.player.price;
-    if (player.status == 'Sold') return;
-    if (+$scope.selectedTeam.team_id === (index + 1)) return;
-    if ($scope.teams[index].leftBudget - bid < 0) return;
-
+    if ($scope.player.status == 'Sold') return;
+    else if (+$scope.selectedTeam.team_id === (index + 1)) return;
+    else if ($scope.teams[index].leftBudget - bid < 0) return;
+    
+    // debugger;
+    $scope.player.status = '';
     $scope.selectedTeam = $scope.teams[index];
     $scope.currentBid = bid;
     $scope.teams[index].budget = $scope.teams[index].leftBudget - $scope.currentBid;
@@ -95,7 +97,8 @@ function tcontroller($scope, $http) {
     .then(() => {
       $scope.selectedTeam = "";
       $scope.currentBid = null;
-      $scope.getTeams();    
+      $scope.getTeams();
+      $scope.getPlayer($scope.nextPlayerId);    
     });
   }
 
@@ -105,7 +108,7 @@ function tcontroller($scope, $http) {
           status: 'UnSold'
         }
       )
-        .then(data => {});
+        .then(data => $scope.player.status = 'Unsold');
   }
 
 }

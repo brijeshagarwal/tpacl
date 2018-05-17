@@ -24,10 +24,10 @@
 
       <div class="col-md-3" style="text-align: center">
         <span style="font-size: 100px;">{{currentBid}}</span>
-        <div class="alert alert-success" style="margin-bottom: 0; margin-top: 1rem;" role="alert" ng-if="player.status == 'Sold'">
+        <div class="alert alert-success" style="margin-bottom: 0; margin-top: 1rem;" role="alert" ng-if="player.status === 'Sold'">
          Sold
         </div>
-        <div class="alert alert-danger" style="margin-bottom: 0; margin-top: 1rem;" role="alert" ng-if="player.status == 'UnSold'">
+        <div class="alert alert-danger" style="margin-bottom: 0; margin-top: 1rem;" role="alert" ng-if="player.status === 'UnSold'">
           Unsold
         </div>
         <br />
