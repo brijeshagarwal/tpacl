@@ -23,13 +23,15 @@ function tcontroller($scope, $http) {
   $scope.selectedTeam = "";
   $scope.teams = [];
   $scope.nextPlayerId = null;
-
+  $scope.unsoldPlayers = [];
   $scope.currentBid = null;
 
   $scope.getPlayer = function (id) {
-    $http.get(`/api/players/id/${id}`)
+    $http.get(`/api/players/id/${id}?filter=%7B%22include%22%3A%20%22teams%22%7D`)
       .then(player => {
         $scope.player = player.data.success[0];
+        $scope.getTeams();
+        $scope.currentBid = null;
       });
   }
 
@@ -108,7 +110,15 @@ function tcontroller($scope, $http) {
           status: 'UnSold'
         }
       )
-        .then(data => $scope.player.status = 'Unsold');
+        .then(data => {
+          $scope.currentBid = null;
+          $scope.getPlayer($scope.nextPlayerId);
+        });
+  }
+
+  $scope.getUnsold = function() {
+    $http.get(`/api/players?filter=%7B%22where%22%3A%7B%22status%22%3A%20%22UnSold%22%7D%7D`)
+    .then(data => $scope.unsoldPlayers = data.data);
   }
 
 }
