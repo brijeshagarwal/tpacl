@@ -1,14 +1,14 @@
-<div class="row" ng-init="getTeams(); getUnsold();" style="padding-left:50px;">
-  <div ng-repeat="team in teams" class="col-md-2">
+<div class="row" ng-init="getTeams(); getUnsold();">
+  <div ng-repeat="team in teams" style="width:20%;">
     <div>
-      <div class="card mt-4" style="height: 60px">
+      <div class="card mt-4" style="height: 60px; margin-bottom: 10px;">
         <div class="row card-body" style="padding: 4px">
-          <div class="col-2" style="">
+          <div class="col-3" style="">
             <img class="card-img-top" style="border-radius: 50%; height: 50px; width: 50px; flex-shrik: 0; background-color: red;" src="/images/players/11.jpg">
           </div>
 
-          <div class="col-9" style="margin-left: 10px;">
-            <h5 class="card-title" style="padding-left: 10px;">{{team.name}}</h5>
+          <div class="col-8">
+            <h5 class="card-title" style="padding-top: 14px; text-align: center;">{{team.name}}</h5>
             <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
                   little bit longer.</p> -->
           </div>
@@ -16,13 +16,13 @@
       </div>
     </div>
     <div ng-repeat="player in team.players track by $index">
-      <div class="card mt-1" style="height: 60px">
+      <div class="card" style="height: 60px; margin-bottom:0px;">
         <div class="row card-body" style="padding: 4px">
-          <div class="col-2" style="">
+          <div class="col-3" style="">
             <img class="card-img-top" style="border-radius: 50%; height: 50px; width: 50px; flex-shrik: 0; background-color: red;" src="/images/players/{{player.image}}">
           </div>
 
-          <div class="col-9" style="margin-left: 10px;">
+          <div class="col-8">
             <h5 class="card-title" style="padding-left: 10px;">{{player.name}}</h5>
             <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
               little bit longer.</p> -->
@@ -32,24 +32,20 @@
     </div>
   </div>
 
-  <div class="col-md-3">
+  <div style="width:20%;">
     <div ng-repeat="player in unsoldPlayers">
         <div>
-            <div class="card mt-4" style="height: 60px">
-              <div class="row card-body" style="padding: 4px">
-                <div class="col-2" style="">
-                  <img class="card-img-top" style="border-radius: 50%; height: 50px; width: 50px; flex-shrik: 0; background-color: red;" src="/images/players/11.jpg">
-                </div>
-      
-                <div class="col-9" style="margin-left: 10px;">
-                  <h5 class="card-title" style="padding-left: 10px;">Unsold</h5>
+            <div class="card mt-4" style="height: 60px; margin-bottom: 10px;">
+              <div class="row card-body" style="padding: 4px">      
+                <div class="col-8" >
+                  <h5 class="card-title" style="padding-top: 14px; text-align: center;">Unsold</h5>
                   <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
                         little bit longer.</p> -->
                 </div>
               </div>
             </div>
           </div>
-      <div class="card mt-1" style="height: 60px; background-color: red;">
+      <div class="card" style="height: 60px; margin-bottom: 0px;">
         <div class="row card-body" style="padding: 4px">
           <div class="col-2" style="">
             <img class="card-img-top" style="border-radius: 50%; height: 50px; width: 50px; flex-shrik: 0; background-color: red;" src="/images/players/{{player.image}}">
